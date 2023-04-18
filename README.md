@@ -68,7 +68,7 @@ Assim, o que precisamos é de uma maneira de associar usuários aos perfis e, em
 
 ## Implementação
 
-Partindo agora para o código, para acharmos o X, Y e Z. Usamos uma função do numpy chamada apartir da matriz A (já criada na primeira etapa) 
+Partindo agora para o código, para acharmos o X, Y e Z. Usamos uma função do numpy chamada apartir da matriz A (já criada na primeira etapa).
 
 
 

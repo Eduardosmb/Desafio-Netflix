@@ -62,13 +62,28 @@ No entanto, sabemos que os usuários reais geralmente não seguem um perfil de p
 Assim, o que precisamos é de uma maneira de associar usuários aos perfis e, em seguida, os perfis aos filmes. Precisamos, portanto, "decompor" nossa matriz nos seguintes componentes:
 
 * $A$ tem uma linha por usuário e uma coluna por filme,
-* $X$ tem uma linha por usuário e uma coluna por perfil,
-* $Y$ é quadrada e mapeia perfis para perfis,
-* $Z$ tem uma linha por perfil e uma coluna por filme.
+* $U$ tem uma linha por usuário e uma coluna por perfil,
+* $S$ é quadrada e mapeia perfis para perfis,
+* $VT$ tem uma linha por perfil e uma coluna por filme.
 
 ## Implementação
 
-Partindo agora para o código, para acharmos o X, Y e Z. Usamos uma função do numpy chamada apartir da matriz A (já criada na primeira etapa).
+Partindo agora para o código, a primeira coisa que devemos fazer é uma cópia da nossa matriz A (já criada na primeira etapa) chamada de B, para assim podermos mexer nela sem alterar a original. Iremos sortear uma posição aleatória na matriz B e substituir a nota atribuida por um valor aleatório (de 0 a 5). Esse será o valor que iremos prever.
+
+Para acharmos esse valor primeiramente precisamos decompor a matriz para assim decobrirmos os os valores S, U e VT. Usamos uma função do numpy chamada "svd" apartir da matriz B O svd nada mais é do que uma decomposição de uma matriz (nesse caso a matriz B em outras três matrizes: 
+
+* Autovalores (Matriz S): uma matriz diagonal que contém os valores singulares da matriz de entrada, ordenados em ordem decrescente. Os valores singulares representam a importância de cada componente na matriz original e são usados para determinar quantas componentes reter na reconstrução da matriz original.
+
+* Atuvetores da direita (Matriz U): é uma matriz ortogonal cujas colunas são os autovetores da matriz de covariância da matriz transposta da entrada $A^TA$.
+
+* Autorvetores da esquerda (Matriz VT): é uma matriz ortogonal cujas colunas são os autovetores da matriz de covariância da matriz de entrada $AA^T$.
+
+
+Logo depois, delimitamos as nossas respectivas matrizes a um valor K, ou seja, dependendo da matriz delimitamos as nossas linhas ou as nossas colunas até certo ponto. Isso com o objetivo de procurar uma precisão. Para descobrir qual K que melhor desempenha nessa questão, testamos todos os possiveis 671 e guardamos o resultado em um csv.
+
+Por fim, para finalmente acharmos a nota esperada pelo usuário usamos uma função do numpy chamada diagsvd
+
+
 
 
 

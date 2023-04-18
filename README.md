@@ -46,25 +46,6 @@ Esse é um trabalho da disciplina Algebra Linear e Teoria da Informação, do cu
    - ```TimeStamp```: Tempo de cada filme
 
   Apartir disso, criamos uma matriz A da seguinte maneira: as linhas representam o id do usuário, as colunas o Id do filme e os valores as notas. Nesse caso podemos ignorar o TimeStamp. Também preenechemos os valores vazios por 2.5 (metade). Dessa forma, temos uma matriz em que cada linha representa um perfil de um usuário, onde está todas as notas atribuidas por ele.
-  
-## Entendendo o Sistema de Recomendação
-
-A ideia por trás do sistema de recomendação é que existem "perfis" de usuários, que representam as preferências típicas de cada grupo de pessoas. Esses perfis são vetores que mostram as notas que os usuários daquele grupo normalmente dão a cada filme. Por exemplo, suponha que temos dois grupos de usuários e três filmes, e que esses grupos têm as seguintes preferências:
-
-- `p_0 = [2, 5, 2]`, que significa que as pessoas no grupo `0` gostam muito do filme `f_1`;
-- `p_1 = [5, 0, 4]`, que significa que as pessoas no grupo `1` gostam dos filmes `f_0` e `f_2`.
-
-No entanto, sabemos que os usuários reais geralmente não seguem um perfil de preferências tão estrito. As notas que eles dão aos filmes são, portanto, modeladas como combinações lineares dos perfis. Por exemplo, podemos ter usuários como:
-
-- `u_0 = 0.1 p_0 + 0.9 p_1`, que é um usuário muito próximo do perfil `p_1` mas distante de `p_0`;
-- `u_1 = 0.1 p_0 + 0.1 p_1`, que é um usuário que está distante tanto do perfil `p_0` quanto do `p_1`.
-
-Assim, o que precisamos é de uma maneira de associar usuários aos perfis e, em seguida, os perfis aos filmes. Precisamos, portanto, "decompor" nossa matriz nos seguintes componentes:
-
-* $A$ tem uma linha por usuário e uma coluna por filme,
-* $U$ tem uma linha por usuário e uma coluna por perfil,
-* $S$ é quadrada e mapeia perfis para perfis,
-* $VT$ tem uma linha por perfil e uma coluna por filme.
 
 ## Implementação
 

@@ -32,7 +32,8 @@ Esse é um trabalho da disciplina Algebra Linear e Teoria da Informação, do cu
 
        1. Rodando o arquivo "netflix.ipynm" no terminal. Importante notar que ao rodar esse arquivo você acaba rodando o código inteiro, ou seja, o tempo de execução será muito grande, pois além de rodar o código que gera o gráfico também rodará o código que busca descobrir qual o K com a mehor precisão. 
        
-       2. Caso queira executar apenas o código que gera o gráfico, basta rodar apenas as últimas duas células do arquivo "netflix.ipynb" manualmente. Lá terá um comentário indicando onde começa o código que gera o gráfico e oque pode ser alterada as suas preferências.
+       2. Caso queira executar apenas o código que gera o gráfico, basta rodar apenas as últimas duas células do arquivo "netflix.ipynb" manualmente. Para fazer isso, basta ir na célula descrita como "Testando o menor K 1500 vezes", onde lá voçê pode escolher um range, visando definir o número de estimações que o código vai executar. Após isso, basta escolher um valor de "k"(delimitador), que pode ser obtido através da análise do csv "results.csv". Depois dessas etapas, basta executar a célula atual e a próxima, onde o gráfico será finalmente gerado.
+       
   
   
   # Modelo matemático
@@ -144,14 +145,17 @@ OBS: tinham no total 671 K
 
 Por fim, pegamos o K que teve a menor média de diferença e testamos um total de 1500 vezes, e plotamos todas as diferenças em um único gráfico:
 
-***
-inserir gráfico
-***
+
+
+![grafico](https://user-images.githubusercontent.com/81189924/233214785-47ab5be9-aa2d-4ba4-b02e-02e6a0a7e02c.png)
+
+
 
 
 # Conclusão
 
    Com base nos resultados obtidos, acreditamos que o sistema proposto não poderia ser utilizado em produção, uma vez que por mais que possua vezes que a diferença se aproxima de zero, na maioria das vezes a diferença fica entre 1 e 2, que nesse caso não é algo irrelevante.
+
 
 
 

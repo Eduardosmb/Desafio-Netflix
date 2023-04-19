@@ -33,37 +33,83 @@ Esse é um trabalho da disciplina Algebra Linear e Teoria da Informação, do cu
   
   # Modelo matemático
 
-## Autovalores e autovetores 
-
-São matrizes descobertas apatir de uma matriz A, que nos permite modificar e restaurar a matriz original. Esse fenomêno pode ser verificado apartir da seguinte equação:
-
-   ![img](img\ax=axalpha.png)
-
- * A: mattriz original
- * X: autovetores
- * alpha: autovalores
-
- Exemplo:
-
-   ![img](img\exEquacao1.png)
-
-
-   É importante notar que a matriz de autovetor, nada mais é do que uma matriz com os autovalores na diagonal.
-
-
-
  ## SVD
 
  O Svd é uma decomposição de uma matriz A em outras 3 matrizes:
 
- * Autovalores(S): uma matriz diagonal que contém os valores singulares da matriz de entrada, ordenados em ordem decrescente. Os valores singulares representam a importância de cada componente na matriz original e são usados para determinar quantas componentes reter na reconstrução da matriz original.
+ * Autovetores(U):uma matriz de uma linha apenas em que cada coluna representa um autovetor.
 
- * Autovetores(U): é uma matriz ortogonal cujas colunas são os autovetores da matriz de covariância da matriz transposta da entrada $A^TA$.
+ * Autovetovalores(S): uma matriz de uma linha apenas com todos os autovalores da matriz A: 
 
- * Autovetores ao quadrado(VT): é uma matriz ortogonal cujas colunas são os autovetores da matriz de covariância da matriz de entrada $AA^T$.
+ * Autovetores ao transpostos(UT): uma matriz de uma coluna apenas em que cada linha representa um autovetor. Note que, essa matriz é a transposta da matriz U.
 
- Podemos utilizar 
+Exemplo:
+
+$$
+ U = \begin{bmatrix}
+\beta1 & \beta2\\
+\end{bmatrix}
+$$
+$$
+ S= \begin{bmatrix}
+x1 & x2\\
+\end{bmatrix}
+$$
+$$
+ UT = \begin{bmatrix}
+\beta1 \\
+\beta2
+\end{bmatrix}
+$$
+
  
+
+ * X = autovalores
+ * $ \beta $ = autvetores
+
+
+ Apartir desses números podemos realizar diversas operações em que nos permitem transformar e restaurar a matriz original. Para isso precisamos apartir dessas matrizes construir uma nova matriz "sigma". Essa é composta com os autovalores na diagonal. Por exemplo:
+
+$$
+ sigma = \begin{bmatrix}
+x1 & 0\\
+0 & x2
+\end{bmatrix}
+$$
+
+Agora que possuimos todas as matrizes necessarias, podemos reconstruir a nossa matriz original A aparitr da equação:
+
+   $$
+   A = U * sigma * UT
+   $$
+
+
+   $$
+      Ou
+   $$
+
+$$
+ A = \begin{bmatrix}
+\beta1 & \beta2\\
+\end{bmatrix}
+
+ * \begin{bmatrix}
+x1 & 0\\
+0 & x2
+\end{bmatrix}
+
+ * \begin{bmatrix}
+\beta1 \\
+\beta2
+\end{bmatrix}
+$$
+
+
+
+
+
+
+
 
 
 

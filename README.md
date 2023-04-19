@@ -46,16 +46,21 @@ Esse é um trabalho da disciplina Algebra Linear e Teoria da Informação, do cu
 Exemplo:
 
 $$
+
  U = \begin{bmatrix}
 \beta1 & \beta2\\
 \end{bmatrix}
+
 $$
 $$
+
  S= \begin{bmatrix}
 x1 & x2\\
 \end{bmatrix}
+
 $$
 $$
+
  UT = \begin{bmatrix}
 \beta1 \\
 \beta2

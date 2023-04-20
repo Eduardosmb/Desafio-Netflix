@@ -1,6 +1,6 @@
 # Desafio-Netflix
 
-Esse é um trabalho da disciplina Algebra Linear e Teoria da Informação, do curso ciências da computação do insper. A ideia é prever qual nota um usuário daria a um filme baseado no seu historico de avaliação. Para isso foi usado um csv chamada"ratings_small".
+Esse é um trabalho da disciplina Algebra Linear e Teoria da Informação, do curso ciências da computação do Insper. A ideia é prever qual nota um usuário daria a um filme baseado no seu histórico de avaliação. Para isso foi usado um csv chamado "ratings_small".
 
 # Como Rodar
 
@@ -30,9 +30,9 @@ Esse é um trabalho da disciplina Algebra Linear e Teoria da Informação, do cu
   
   7. Após a instalação de tudo, pode-se rodar o programa de duas distintas maneira:
 
-       1. Rodando o arquivo "netflix.ipynm" no terminal. Importante notar que ao rodar esse arquivo você acaba rodando o código inteiro, ou seja, o tempo de execução será muito grande, pois além de rodar o código que gera o gráfico também rodará o código que busca descobrir qual o K com a mehor precisão. 
+       1. Rodando o arquivo "netflix.ipynb" no terminal. Importante notar que ao rodar esse arquivo você acaba rodando o código inteiro, ou seja, o tempo de execução será muito grande(podendo ultrapassar 1 hora), pois além de rodar o código que gera o gráfico também rodará o código que busca descobrir qual o K com a menor precisão. 
        
-       2. Caso queira executar apenas o código que gera o gráfico, basta rodar apenas as últimas duas células do arquivo "netflix.ipynb" manualmente. Para fazer isso, basta ir na célula descrita como "Testando o menor K 1500 vezes", onde lá voçê pode escolher um range, visando definir o número de estimações que o código vai executar. Após isso, basta escolher um valor de "k"(delimitador), que pode ser obtido através da análise do csv "results.csv". Depois dessas etapas, basta executar a célula atual e a próxima, onde o gráfico será finalmente gerado.
+       2. Caso queira executar apenas o código que gera o gráfico, basta rodar apenas as últimas duas células do arquivo "netflix.ipynb" manualmente. Para fazer isso, basta ir na célula descrita como "Testando o menor K 1500 vezes", onde lá você pode escolher um range, visando definir o número de estimações que o código vai executar. Após isso, basta escolher um valor de "k"(delimitador), que pode ser obtido através da análise do csv "results.csv". Depois dessas etapas, basta executar a célula atual e a próxima, onde o gráfico será finalmente gerado.
        
   
   
@@ -42,7 +42,7 @@ Esse é um trabalho da disciplina Algebra Linear e Teoria da Informação, do cu
 
  O Svd é uma decomposição de uma matriz A em outras 3 matrizes:
 
- * Autovetores(U):uma matriz de uma linha apenas em que cada coluna representa um autovetor.
+ * Autovetores(U): uma matriz de uma linha apenas em que cada coluna representa um autovetor.
 
  * Autovetovalores(S): uma matriz de uma linha apenas em que cada coluna representa um autovalor da matriz A.
 
@@ -75,10 +75,10 @@ $$
  
 
  * X = autovalores
- * $ \beta $ = autvetores
+ * $ \beta $ = autovetores
 
 
- Apartir desses números podemos realizar diversas operações em que nos permitem transformar e restaurar a matriz original. Para isso precisamos apartir dessas matrizes construir uma nova matriz "sigma". Essa é composta com os autovalores na diagonal. Por exemplo:
+ A partir desses números podemos realizar diversas operações em que nos permitem transformar e restaurar a matriz original. Para isso precisamos a partir dessas matrizes construir uma nova matriz "sigma". Essa é composta com os autovalores na diagonal. Por exemplo:
 
 $$
  sigma = \begin{bmatrix}
@@ -87,7 +87,7 @@ x1 & 0\\
 \end{bmatrix}
 $$
 
-Agora que possuimos todas as matrizes necessarias, podemos reconstruir a nossa matriz original A aparitr da equação:
+Agora que possuímos todas as matrizes necessarias, podemos reconstruir a nossa matriz original A aparitr da equação:
 
    $$
    A = U * sigma * UT
@@ -115,19 +115,19 @@ x1 & 0\\
 $$
 
 
-Tanto os autovalores e autovetores quanto o sigma, são facilmente calculados apartir de funções do numpy chamadas "svd" e "diagsvd" respectivamente. 
+Tanto os autovalores e autovetores, quanto o sigma, são facilmente calculados apartir de funções do numpy chamadas "svd" e "diagsvd" respectivamente. 
 
 
 
 ## Implementação
 
-   Para solucionar o problema proposto, primeiro precisamos criar uma matriz A de usuario por filmes apartir do csv "small_ratings.csv". Depois criamos uma cópia dessa matriz chamada de B. Nela, além de substuirmos todos os valores vazios por 2.5 (metade da nota máxima), também substituimos um valor aleatório diferente de 2.5 por uma nova nota aleatória. Tudo isso com o objetivo de podermos prever qual a nota original atribuida pelo usuário.
+   Para solucionar o problema proposto, primeiro precisamos criar uma matriz A de usuário por filmes a partir do csv "small_ratings.csv". Depois criamos uma cópia dessa matriz chamada de B. Nela, além de substituírmos todos os valores vazios por 2.5 (metade da nota máxima), também substituímos um valor aleatório diferente de 2.5 por uma nova nota aleatória. Tudo isso visando prever qual a nota original atribuida pelo usuário.
 
-   Após isso, apartir de uma função chamada "svd" do numpy, calculamos os autovalores e autovetores da matriz A. Agora precisamos fazer uma compressão dessas novas três matrizes criadas. Para isso, definimos um valor de K com a finalidade de limitar o número de autovalores e autovetores que serão utilizados em cada uma das matrizes: U, S e UT. Todo esse processo é feito com a intenção de achar uma precisão em que a diferença entre a matriz original e a matriz reconstruida seja a menor possível (a precisão é gerada pela limitação do K).
+   Após isso, a partir de uma função chamada "svd" do numpy, calculamos os autovalores e autovetores da matriz A. Agora precisamos fazer uma compressão dessas novas três matrizes criadas. Para isso, definimos um valor de K com a finalidade de limitar o número de autovalores e autovetores que serão utilizados em cada uma das matrizes: U, S e UT. Todo esse processo é feito com a intenção de achar uma precisão em que a diferença entre a matriz original e a matriz reconstruída seja a menor possível (a precisão é gerada pela limitação do K).
 
-   Após a compressão, pegamos essas novas matrizes comprimidas e apartir da função do numpy "diagsvd" criamos uma nova matriz chamada de "sigma".
+   Após a compressão, pegamos essas novas matrizes comprimidas e a partir da função do numpy "diagsvd" criamos uma nova matriz chamada de "sigma".
 
-   Agora que possuimos todas as matrizes necessarias, podemos reconstruir a nossa matriz original A apartir da equação:
+   Agora que possuímos todas as matrizes necessarias, podemos reconstruir a nossa matriz original A a partir da equação:
 
    $$
    A = U * sigma * UT
@@ -147,7 +147,7 @@ Por fim, pegamos o K que teve a menor média de diferença e testamos um total d
 
 
 
-![grafico](https://user-images.githubusercontent.com/81189924/233214785-47ab5be9-aa2d-4ba4-b02e-02e6a0a7e02c.png)
+![histograma](https://user-images.githubusercontent.com/81189924/233224624-b2da22af-da28-491c-8494-2027d7b17637.png)
 
 
 
